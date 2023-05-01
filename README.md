@@ -1,4 +1,4 @@
-# jQuery Cycle/jCarousel Slider
+# jQuery Slider
 This is a demo of the jQuery Cycle plugin combined with the jCarousel lite plugin. The purpose of this demo is to showcase a slideshow of images that can be navigated using both previous and next buttons as well as a thumbnail pager.
 
 ## Getting started
