@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <style>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --favicon-bg: #f7b733;
+        --favicon-fg: #222;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --favicon-bg: #ec9700;
+        --favicon-fg: #fff;
+      }
+    }
+  </style>
+  <rect width="32" height="32" rx="8" fill="var(--favicon-bg, #ec9700)"/>
+  <path d="M14.5 9C12.5 9 10.6667 9.83333 9 11.5L11 13.5C12 12.5 13 12 14.5 12C16 12 17.5 12.6667 18.5 14C19.5 15.3333 19.5 17 19 18.5C18.5 20 17.5 21.1667 16 21.5L16 24.5C19 24.1667 21.3333 22.5 22.5 20C23.6667 17.5 23.6667 14.8333 22.5 12.5C21.3333 10.1667 18.5 9 14.5 9Z" fill="var(--favicon-fg, #fff)"/>
+  <path d="M16 24.5L16 21.5C14.5 21.1667 13.3333 20 12.5 18.5L9.5 20C10.8333 22.6667 13 24.1667 16 24.5Z" fill="var(--favicon-fg, #fff)"/>
+</svg>

@@ -1,105 +1,355 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Cycle Plugin + jCarousel - Demo</title>
-        <style type="text/css">
-        	#slideshow-wrapper {overflow: hidden; margin: 0 auto;}
-            	#slideshow {overflow: hidden; width: 400px; height: 300px; padding: 0; margin: 30px auto; list-style-type: none;}
-           		#slideshow li {padding: 0px; list-style-type: none;}
-					
-					#slideshow-controls {text-align: center;}
-			
-			#slide-pager {margin: 20px auto 0;}
-            	#slide-pager ul {list-style-type: none; margin: 0; padding: 0; clear: both;}
-						#slide-pager ul li {margin-right: 10px; border: 2px solid #fff;}
-							#slide-pager ul li img { display: block;}
-			
-			.wrapp {width: 500px; margin: 0 auto; position: relative;}	
-				#slide-pager_prev {display: none;}
-				#slide-pager_next {display: none;}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accessible Responsive Carousel Demo</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#ec9700">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="pull-indicator" aria-hidden="true"></div>
+    <header class="main-header">
+      <h1>Accessible Responsive Carousel Demo</h1>
+      <p class="subtitle">Modern, beautiful, and fully accessible image slider</p>
+    </header>
+    <main class="container">
+    <section id="slideshow-wrapper" aria-label="Image carousel" role="region">
+      <ul id="slideshow" role="listbox" aria-live="polite">
+        <li role="option" aria-selected="true">
+          <img
+            src="https://placehold.co/400x300/ff4444/fff?text=Slide+1"
+            width="400"
+            height="300"
+            alt="Red placeholder for carousel slide 1."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/44ff44/fff?text=Slide+2"
+            width="400"
+            height="300"
+            alt="Green placeholder for carousel slide 2."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/4444ff/fff?text=Slide+3"
+            width="400"
+            height="300"
+            alt="Blue placeholder for carousel slide 3."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/ffff44/222?text=Slide+4"
+            width="400"
+            height="300"
+            alt="Yellow placeholder for carousel slide 4."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/44ffff/222?text=Slide+5"
+            width="400"
+            height="300"
+            alt="Cyan placeholder for carousel slide 5."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/ff44ff/fff?text=Slide+6"
+            width="400"
+            height="300"
+            alt="Magenta placeholder for carousel slide 6."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/ff9900/fff?text=Slide+7"
+            width="400"
+            height="300"
+            alt="Orange placeholder for carousel slide 7."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/663399/fff?text=Slide+8"
+            width="400"
+            height="300"
+            alt="Purple placeholder for carousel slide 8."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/009933/fff?text=Slide+9"
+            width="400"
+            height="300"
+            alt="Dark green placeholder for carousel slide 9."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/cc3300/fff?text=Slide+10"
+            width="400"
+            height="300"
+            alt="Dark red placeholder for carousel slide 10."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/006699/fff?text=Slide+11"
+            width="400"
+            height="300"
+            alt="Navy blue placeholder for carousel slide 11."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/cc9900/fff?text=Slide+12"
+            width="400"
+            height="300"
+            alt="Gold placeholder for carousel slide 12."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/669900/fff?text=Slide+13"
+            width="400"
+            height="300"
+            alt="Olive green placeholder for carousel slide 13."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/9966cc/fff?text=Slide+14"
+            width="400"
+            height="300"
+            alt="Lavender placeholder for carousel slide 14."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/cc6633/fff?text=Slide+15"
+            width="400"
+            height="300"
+            alt="Burnt orange placeholder for carousel slide 15."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/336699/fff?text=Slide+16"
+            width="400"
+            height="300"
+            alt="Steel blue placeholder for carousel slide 16."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/993366/fff?text=Slide+17"
+            width="400"
+            height="300"
+            alt="Maroon placeholder for carousel slide 17."
+          />
+        </li>
+        <li role="option" aria-selected="false">
+          <img
+            src="https://placehold.co/400x300/339966/fff?text=Slide+18"
+            width="400"
+            height="300"
+            alt="Sea green placeholder for carousel slide 18."
+          />
+        </li>
+      </ul>
+      <nav id="slideshow-controls" aria-label="Carousel controls">
+        <button id="prev" aria-label="Previous slide" tabindex="0" class="carousel-btn">
+          <span aria-hidden="true">&#8592;</span> Previous
+        </button>
+        <button id="next" aria-label="Next slide" tabindex="0" class="carousel-btn">
+          Next <span aria-hidden="true">&#8594;</span>
+        </button>
+      </nav>
+    </section>
+    <div class="wrapp">
+      <button id="slide-pager_prev" aria-label="Scroll thumbnails left">
+        <span aria-hidden="true">←</span>
+      </button>
+      <div id="slide-pager" aria-label="Carousel thumbnails" role="navigation">
+        <ul>
+          <li>
+            <a href="#" aria-label="Go to slide 1"
+              ><img
+                src="https://placehold.co/100x80/ff4444/fff?text=1"
+                width="100"
+                height="80"
+                alt="Red thumbnail for slide 1."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 2"
+              ><img
+                src="https://placehold.co/100x80/44ff44/fff?text=2"
+                width="100"
+                height="80"
+                alt="Green thumbnail for slide 2."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 3"
+              ><img
+                src="https://placehold.co/100x80/4444ff/fff?text=3"
+                width="100"
+                height="80"
+                alt="Blue thumbnail for slide 3."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 4"
+              ><img
+                src="https://placehold.co/100x80/ffff44/222?text=4"
+                width="100"
+                height="80"
+                alt="Yellow thumbnail for slide 4."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 5"
+              ><img
+                src="https://placehold.co/100x80/44ffff/222?text=5"
+                width="100"
+                height="80"
+                alt="Cyan thumbnail for slide 5."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 6"
+              ><img
+                src="https://placehold.co/100x80/ff44ff/fff?text=6"
+                width="100"
+                height="80"
+                alt="Magenta thumbnail for slide 6."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 7"
+              ><img
+                src="https://placehold.co/100x80/ff9900/fff?text=7"
+                width="100"
+                height="80"
+                alt="Orange thumbnail for slide 7."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 8"
+              ><img
+                src="https://placehold.co/100x80/663399/fff?text=8"
+                width="100"
+                height="80"
+                alt="Purple thumbnail for slide 8."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 9"
+              ><img
+                src="https://placehold.co/100x80/009933/fff?text=9"
+                width="100"
+                height="80"
+                alt="Dark green thumbnail for slide 9."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 10"
+              ><img
+                src="https://placehold.co/100x80/cc3300/fff?text=10"
+                width="100"
+                height="80"
+                alt="Dark red thumbnail for slide 10."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 11"
+              ><img
+                src="https://placehold.co/100x80/006699/fff?text=11"
+                width="100"
+                height="80"
+                alt="Navy blue thumbnail for slide 11."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 12"
+              ><img
+                src="https://placehold.co/100x80/cc9900/fff?text=12"
+                width="100"
+                height="80"
+                alt="Gold thumbnail for slide 12."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 13"
+              ><img
+                src="https://placehold.co/100x80/669900/fff?text=13"
+                width="100"
+                height="80"
+                alt="Olive green thumbnail for slide 13."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 14"
+              ><img
+                src="https://placehold.co/100x80/9966cc/fff?text=14"
+                width="100"
+                height="80"
+                alt="Lavender thumbnail for slide 14."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 15"
+              ><img
+                src="https://placehold.co/100x80/cc6633/fff?text=15"
+                width="100"
+                height="80"
+                alt="Burnt orange thumbnail for slide 15."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 16"
+              ><img
+                src="https://placehold.co/100x80/336699/fff?text=16"
+                width="100"
+                height="80"
+                alt="Steel blue thumbnail for slide 16."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 17"
+              ><img
+                src="https://placehold.co/100x80/993366/fff?text=17"
+                width="100"
+                height="80"
+                alt="Maroon thumbnail for slide 17."
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Go to slide 18"
+              ><img
+                src="https://placehold.co/100x80/339966/fff?text=18"
+                width="100"
+                height="80"
+                alt="Sea green thumbnail for slide 18."
+            /></a>
+          </li>
+        </ul>
+      </div>
+      <button id="slide-pager_next" aria-label="Scroll thumbnails right">
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
 
-				#slide-pager ul li.activeSlide {border: 2px solid #EC9700;}
-            
-			
-        </style>
-        <!-- include jQuery library -->
-        <script type="text/javascript" src="./js/jquery_v1.3.2.js"></script>
-        <!-- include Cycle plugin -->
-        <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
-		<!-- include jCarousel lite plugin -->
-        <script type="text/javascript" src="./js/jcarousel.js"></script>
-        
-    </head>
-    <body>
-<div id="slideshow-wrapper">
-	<ul id="slideshow">
-		<li><img src="https://placehold.co/400x300" width="400" height="300" /></li>
-		<li><img src="https://placehold.co/400x300" width="400" height="300" /></li>
-		<li><img src="https://placehold.co/400x300" width="400" height="300" /></li>
-		<li><img src="https://placehold.co/400x300" width="400" height="300" /></li>
-		<li><img src="https://placehold.co/400x300" width="400" height="300" /></li>
-		<li><img src="https://placehold.co/400x300" width="400" height="300" /></li>
-	</ul>
-	<div id="slideshow-controls">
-		<a href="#" id="prev">&lt; Prev</a>
-		<a href="#" id="next">Next &gt;</a>
-	</div>
-</div>
-<div class="wrapp">
-	<button id="slide-pager_prev">&lt;&lt;</button>
-	<div id="slide-pager">
-		<ul>
-			<li><a href="#"><img src="https://placehold.co/100x80" width="100" height="80" alt="" /></a></li>
-			<li><a href="#"><img src="https://placehold.co/100x80" width="100" height="80" alt="" /></a></li>
-			<li><a href="#"><img src="https://placehold.co/100x80" width="100" height="80" alt="" /></a></li>
-			<li><a href="#"><img src="https://placehold.co/100x80" width="100" height="80" alt="" /></a></li>
-			<li><a href="#"><img src="https://placehold.co/100x80" width="100" height="80" alt="" /></a></li>
-			<li><a href="#"><img src="https://placehold.co/100x80" width="100" height="80" alt="" /></a></li>
-		</ul>
-	</div>
-	<button id="slide-pager_next">&gt;&gt;</button>
-</div>
-
-<script type="text/javascript">
-	(function ($) {
-	
-	    $('#slideshow').cycle({
-	        fx: 'scrollHorz',
-	        speed: 'fast',
-	        timeout: 0,
-	        prev: '#prev',
-	        next: '#next',
-	        nowrap: 1,
-	        pager: '#slide-pager ul',
-	        pagerAnchorBuilder: function (idx, slide) {
-	            // return selector string for existing anchor 
-	            return '#slide-pager ul li:eq(' + idx + ') a';
-	        },
-	        onPrevNextEvent: function (dir, id, el) {
-	            if (dir === true) {
-	                //alert('slide right');
-	                if (id >= 3) {
-	                    //alert(i);
-	                    $('#slide-pager_next').click();
-	                }
-	            } else {
-	                //alert('slide left');
-	                if (id >= 1) {
-	                    //alert(i);
-	                    $('#slide-pager_prev').click();
-	                }
-	            }
-	        }
-	    });
-	
-	    $("#slide-pager").jCarouselLite({
-	        btnNext: "#slide-pager_next",
-	        btnPrev: "#slide-pager_prev",
-	        circular: false,
-	        visible: 4
-	    });
-	
-	})(jQuery);
-</script>
-</body>
+    </main>
+    <script src="js/carousel.js"></script>
+  </body>
 </html>
