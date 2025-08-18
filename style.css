@@ -229,6 +229,7 @@ body {
   overscroll-behavior-x: contain;
   touch-action: pan-x;
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  white-space: nowrap; /* Ensure thumbnails are laid out horizontally */
 }
 
 #slide-pager ul::-webkit-scrollbar {
@@ -246,37 +247,6 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5em;
-}
-
-/* Add visual indication that thumbnails are scrollable */
-.wrapp::before {
-  content: '';
-  position: absolute;
-  left: 52px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 3px;
-  background: linear-gradient(to right, var(--carousel-primary-light), transparent);
-  border-radius: 2px;
-  pointer-events: none;
-  opacity: 0.7;
-  z-index: 5;
-}
-
-.wrapp::after {
-  content: '';
-  position: absolute;
-  right: 52px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 3px;
-  background: linear-gradient(to left, var(--carousel-primary-light), transparent);
-  border-radius: 2px;
-  pointer-events: none;
-  opacity: 0.7;
-  z-index: 5;
 }
 
 #slide-pager_prev,
@@ -351,6 +321,7 @@ body {
   position: relative;
   scroll-snap-align: center;
   -webkit-tap-highlight-color: transparent;
+  display: inline-block; /* Ensure thumbnails are inline */
 }
 
 #slide-pager ul li.activeSlide {

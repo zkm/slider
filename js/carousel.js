@@ -183,25 +183,15 @@ document.addEventListener('DOMContentLoaded', function () {
 	if (prevBtn) prevBtn.addEventListener('keydown', handleKey);
 	if (nextBtn) nextBtn.addEventListener('keydown', handleKey);
 
-	// Responsive thumbnail scroll
-	const pagerPrev = document.getElementById('slide-pager_prev');
-	const pagerNext = document.getElementById('slide-pager_next');
-	
+	// Removed pagerNext-related code
 	function updatePagerButtons() {
-		// Check if we are at the start or end of scroll
-		const scrollLeft = pagerList.scrollLeft;
-		const maxScroll = pagerList.scrollWidth - pagerList.offsetWidth;
-		pagerPrev.setAttribute('aria-disabled', scrollLeft <= 0 ? 'true' : 'false');
-		pagerNext.setAttribute('aria-disabled', scrollLeft >= maxScroll - 1 ? 'true' : 'false');
+		// No longer needed since pagerNext is removed
 	}
 	
 	// Handle window resizing for thumbnail visibility
 	window.addEventListener('resize', function() {
 		updateThumbnailVisibility();
-		updatePagerButtons();
 	});
-	
-	pagerList.addEventListener('scroll', updatePagerButtons);
 	
 	// Initialize pager button state
 	updatePagerButtons();
@@ -216,30 +206,40 @@ document.addEventListener('DOMContentLoaded', function () {
 			const thumbWidth = thumbnailItems[0].offsetWidth;
 			const gap = 12; // Gap between thumbnails
 			scrollAmount = thumbWidth + gap;
+			console.log('Updated scrollAmount:', scrollAmount); // Log scroll amount
 		}
 	}
 	
 	// Update scroll amount when window resizes
-	window.addEventListener('resize', updateScrollAmount);
+	window.addEventListener('resize', () => {
+		console.log('Window resized');
+		updateScrollAmount();
+	});
 	
 	// Improve scroll button interactions
-	pagerPrev.addEventListener('click', function() {
+	nextBtn.addEventListener('click', function() {
 		updateScrollAmount();
+		console.log('Next clicked');
+		console.log('Scroll position before Next:', pagerList.scrollLeft); // Log scroll position before
 		pagerList.scrollBy({ 
-			left: -scrollAmount * 2, // Scroll 2 thumbnails at a time
+			left: scrollAmount * 2, // Scroll 2 thumbnails at a time
 			behavior: 'smooth' 
 		});
+		console.log('Scroll position after Next:', pagerList.scrollLeft); // Log scroll position after
 		// Add visual feedback
 		this.classList.add('button-clicked');
 		setTimeout(() => this.classList.remove('button-clicked'), 200);
 	});
 	
-	pagerNext.addEventListener('click', function() {
+	prevBtn.addEventListener('click', function() {
 		updateScrollAmount();
+		console.log('Prev clicked');
+		console.log('Scroll position before Prev:', pagerList.scrollLeft); // Log scroll position before
 		pagerList.scrollBy({ 
-			left: scrollAmount * 2, // Scroll 2 thumbnails at a time
+			left: -scrollAmount * 2, // Scroll 2 thumbnails at a time
 			behavior: 'smooth' 
 		});
+		console.log('Scroll position after Prev:', pagerList.scrollLeft); // Log scroll position after
 		// Add visual feedback
 		this.classList.add('button-clicked');
 		setTimeout(() => this.classList.remove('button-clicked'), 200);
@@ -349,4 +349,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 	// Initial thumbnail visibility setup
 	updateThumbnailVisibility();
+
+	thumbnailItems.forEach((item, index) => {
+    console.log(`Thumbnail ${index} width:`, item.offsetWidth);
+});
+
+const totalThumbnailWidth = thumbnailItems.reduce((acc, item) => acc + item.offsetWidth, 0);
+console.log('Total Thumbnail Width:', totalThumbnailWidth);
 });
