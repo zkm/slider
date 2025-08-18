@@ -1,0 +1,21 @@
+{
+  "name": "Modern Carousel Demo",
+  "short_name": "Carousel",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#ec9700",
+  "background_color": "#f7f7fa",
+  "display": "standalone"
+}

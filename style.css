@@ -1,0 +1,628 @@
+/* Modern carousel styles - 2025 State of CSS edition */
+:root {
+  --carousel-primary: #ec9700;
+  --carousel-primary-light: #f7b733;
+  --carousel-primary-dark: #d98800;
+  --carousel-bg: #f7f7fa;
+  --carousel-text: #222;
+  --carousel-white: #fff;
+  --carousel-shadow-sm: 0 1px 4px rgba(236,151,0,0.08);
+  --carousel-shadow-md: 0 2px 8px rgba(0,0,0,0.07);
+  --carousel-shadow-lg: 0 2px 16px rgba(0,0,0,0.07);
+  --carousel-border-radius: 8px;
+  --carousel-transition: 0.2s ease-in-out;
+  --carousel-transition-slide: 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  --carousel-touch-feedback: 1px 1px 0 rgba(0,0,0,0.1);
+  
+  /* Enhanced mobile sizes */
+  --carousel-thumb-width-mobile: 60px;
+  --carousel-thumb-height-mobile: 48px;
+  --carousel-button-size-mobile: 48px;
+}
+
+@supports (font-variation-settings: normal) {
+  body {
+    font-family: 'Segoe UI Variable', 'Inter', system-ui, sans-serif;
+  }
+}
+
+body {
+  font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+  background: var(--carousel-bg);
+  color: var(--carousel-text);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 100vw;
+  margin-inline: auto;
+  padding-block: 0.5rem;
+  padding-inline: 0.25rem;
+}
+
+.main-header {
+  text-align: center;
+  padding-block: 1rem 0.5rem;
+  padding-inline: 0.5rem;
+  background: linear-gradient(90deg, var(--carousel-primary) 0%, var(--carousel-primary-light) 100%);
+  color: var(--carousel-white);
+  border-radius: 0 0 12px 12px;
+  box-shadow: var(--carousel-shadow-md);
+}
+
+.main-header h1 {
+  font-size: clamp(1.3rem, 5vw, 2.5rem);
+  margin-block-end: 0.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.main-header .subtitle {
+  font-size: clamp(0.95rem, 3vw, 1.2rem);
+  font-weight: 400;
+  margin: 0;
+}
+
+.carousel-btn {
+  background: var(--carousel-white);
+  color: var(--carousel-primary);
+  border: 2px solid var(--carousel-primary);
+  border-radius: var(--carousel-border-radius);
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  margin-inline: 0.3em;
+  cursor: pointer;
+  transition: all var(--carousel-transition);
+  box-shadow: var(--carousel-shadow-sm);
+  outline: none;
+  min-width: 48px;
+  min-height: 48px;
+  touch-action: manipulation;
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.carousel-btn:is(:focus, :hover) {
+  background: var(--carousel-primary);
+  color: var(--carousel-white);
+  box-shadow: var(--carousel-shadow-md);
+}
+
+/* Touch feedback effects */
+.carousel-btn:active {
+  background: var(--carousel-primary-dark);
+  color: var(--carousel-white);
+  transform: scale(0.97);
+  text-shadow: var(--carousel-touch-feedback);
+}
+
+/* Ripple effect for touch feedback */
+.touch-ripple {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
+  animation: ripple 0.6s linear;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+#slideshow-wrapper {
+  background: var(--carousel-white);
+  border-radius: var(--carousel-border-radius);
+  box-shadow: var(--carousel-shadow-lg);
+  padding-block: 0.5rem 1rem;
+  padding-inline: 0.25rem;
+  margin-block-end: 1rem;
+  overflow: hidden;
+  margin-inline: auto;
+  max-width: 100vw;
+}
+
+#slideshow {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  height: 120px;
+  padding: 0;
+  margin-block: 12px;
+  margin-inline: auto;
+  list-style-type: none;
+  border-radius: var(--carousel-border-radius);
+  box-shadow: var(--carousel-shadow-sm);
+  background: var(--carousel-bg);
+  overflow: hidden;
+}
+
+#slideshow li {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  transition: opacity var(--carousel-transition-slide), transform var(--carousel-transition-slide);
+  opacity: 0;
+  transform: translateX(100%);
+  will-change: opacity, transform;
+  padding: 0;
+  list-style-type: none;
+  /* Touch enhancements */
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#slideshow li[aria-selected="true"] {
+  display: grid;
+  opacity: 1;
+  z-index: 2;
+  transform: translateX(0);
+}
+
+/* Enhanced slide transitions for swipe */
+#slideshow li.slide-outgoing-next {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+#slideshow li.slide-incoming-next {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#slideshow li.slide-outgoing-prev {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+#slideshow li.slide-incoming-prev {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#slideshow li img {
+  border-radius: var(--carousel-border-radius);
+  box-shadow: var(--carousel-shadow-md);
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+#slideshow-controls {
+  text-align: center;
+  margin-block-start: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#slide-pager {
+  margin-block-start: 16px;
+  max-width: 100vw;
+  flex: 1 1 auto;
+}
+
+#slide-pager ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 8px 4px;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  white-space: nowrap; /* Ensure thumbnails are laid out horizontally */
+}
+
+#slide-pager ul::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.wrapp {
+  width: 100%;
+  max-width: 100vw;
+  margin-inline: auto;
+  position: relative;
+  background: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+#slide-pager_prev,
+#slide-pager_next {
+  flex: 0 0 auto;
+  opacity: 1;
+  pointer-events: auto;
+  transition: all var(--carousel-transition);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  background-color: var(--carousel-primary);
+  color: var(--carousel-white);
+  border-radius: 50%;
+  box-shadow: var(--carousel-shadow-md);
+  position: relative;
+  z-index: 10;
+  border: none;
+}
+
+#slide-pager_prev span,
+#slide-pager_next span {
+  font-size: 1.4rem;
+  line-height: 1;
+  display: block;
+}
+
+#slide-pager_prev:hover,
+#slide-pager_next:hover {
+  transform: scale(1.1);
+  background-color: var(--carousel-primary-dark);
+}
+
+#slide-pager_prev:active,
+#slide-pager_next:active,
+#slide-pager_prev.button-clicked,
+#slide-pager_next.button-clicked {
+  transform: scale(0.95);
+}
+
+/* Animation for button click */
+@keyframes button-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+.button-clicked {
+  animation: button-pulse 0.2s ease-out;
+}
+
+#slide-pager_prev[aria-disabled="true"],
+#slide-pager_next[aria-disabled="true"] {
+  opacity: 0.3;
+  pointer-events: none;
+  background-color: #999;
+}
+
+#slide-pager ul li {
+  border: 2px solid var(--carousel-white);
+  min-width: var(--carousel-thumb-width-mobile, 44px);
+  min-height: var(--carousel-thumb-height-mobile, 36px);
+  flex: 0 0 auto;
+  border-radius: var(--carousel-border-radius);
+  transition: border var(--carousel-transition), box-shadow var(--carousel-transition), transform 0.15s ease;
+  box-shadow: var(--carousel-shadow-sm);
+  background: var(--carousel-white);
+  position: relative;
+  scroll-snap-align: center;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block; /* Ensure thumbnails are inline */
+}
+
+#slide-pager ul li.activeSlide {
+  border: 2px solid var(--carousel-primary);
+  box-shadow: var(--carousel-shadow-md);
+  transform: translateY(-4px);
+  position: relative;
+}
+
+/* Active thumbnail indicator */
+#slide-pager ul li.activeSlide::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: var(--carousel-primary);
+  border-radius: 50%;
+}
+
+#slide-pager ul li:active {
+  transform: scale(0.95);
+}
+
+#slide-pager ul li img {
+  display: block;
+  width: var(--carousel-thumb-width-mobile, 44px);
+  height: var(--carousel-thumb-height-mobile, 36px);
+  object-fit: cover;
+  border-radius: calc(var(--carousel-border-radius) - 2px);
+  aspect-ratio: 100 / 80;
+}
+
+/* Add a touch indicator for thumbnails */
+#slide-pager ul li a {
+  position: relative;
+  display: block;
+}
+
+#slide-pager ul li a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.05) 150%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+#slide-pager ul li a:active::after {
+  opacity: 1;
+}
+
+/* Add classes to control thumbnail visibility at different breakpoints */
+#slide-pager ul li {
+  border: 2px solid var(--carousel-white);
+  min-width: var(--carousel-thumb-width-mobile, 44px);
+  min-height: var(--carousel-thumb-height-mobile, 36px);
+  flex: 0 0 auto;
+  border-radius: var(--carousel-border-radius);
+  transition: border var(--carousel-transition), box-shadow var(--carousel-transition), transform 0.15s ease;
+  box-shadow: var(--carousel-shadow-sm);
+  background: var(--carousel-white);
+  position: relative;
+  scroll-snap-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Visibility classes for thumbnails */
+.thumb-always-visible {
+  display: block; /* Always show these thumbnails (first, active, last) */
+}
+
+.thumb-medium-visible {
+  display: block; /* Show on medium screens and up */
+}
+
+.thumb-large-visible {
+  display: block; /* Show on large screens only */
+}
+
+/* Small phones optimization - Show only 2 thumbnails */
+@media (max-width: 400px) {
+  .carousel-btn {
+    padding: 0.4em 0.8em;
+    font-size: 0.9rem;
+  }
+  
+  .main-header {
+    padding-block: 0.8rem 0.4rem;
+  }
+  
+  #slideshow {
+    height: 150px;
+  }
+  
+  #slideshow li img {
+    height: 150px;
+  }
+  
+  #slide-pager ul li {
+    min-width: 50px;
+    min-height: 40px;
+  }
+  
+  #slide-pager ul li img {
+    width: 50px;
+    height: 40px;
+  }
+  
+  /* Hide all thumbnails except important ones on small screens */
+  #slide-pager ul li:not(.thumb-always-visible) {
+    display: none;
+  }
+  
+  /* Special indicator to show that there are more thumbnails */
+  .thumb-indicator {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    min-width: 30px !important;
+    width: 30px !important;
+    height: 40px !important;
+    opacity: 0.7;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: relative;
+  }
+  
+  .thumb-indicator::after {
+    content: '•••';
+    color: var(--carousel-primary);
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  
+  /* Add fading edge effect for thumbnails */
+  #slide-pager::before,
+  #slide-pager::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  #slide-pager::before {
+    left: 0;
+    background: linear-gradient(to right, var(--carousel-white), transparent);
+  }
+  
+  #slide-pager::after {
+    right: 0;
+    background: linear-gradient(to left, var(--carousel-white), transparent);
+  }
+}
+
+/* Medium screens - Show 3 thumbnails */
+@media (min-width: 401px) and (max-width: 599px) {
+  #slideshow {
+    height: 180px;
+  }
+  
+  #slideshow li img {
+    height: 180px;
+  }
+  
+  #slide-pager ul li {
+    min-width: 60px;
+    min-height: 48px;
+  }
+  
+  #slide-pager ul li img {
+    width: 60px;
+    height: 48px;
+  }
+  
+  /* Show medium visibility thumbnails */
+  .thumb-medium-visible {
+    display: block;
+  }
+  
+  /* Hide large visibility thumbnails */
+  .thumb-large-visible:not(.thumb-always-visible):not(.thumb-medium-visible) {
+    display: none;
+  }
+}
+
+/* Tablet and desktop */
+@media (min-width: 600px) {
+  .container {
+    max-width: 900px;
+    padding-block: 2rem;
+    padding-inline: 1rem;
+  }
+  
+  #slideshow {
+    max-width: 400px;
+    height: 300px;
+  }
+  
+  #slideshow li img {
+    width: 400px;
+    height: 300px;
+  }
+  
+  #slide-pager ul li {
+    min-width: 100px;
+    min-height: 80px;
+  }
+  
+  #slide-pager ul li img {
+    width: 100px;
+    height: 80px;
+  }
+  
+  .wrapp {
+    max-width: 500px;
+  }
+  
+  /* Reset touch-specific styles */
+  #slide-pager ul li:active {
+    transform: none;
+  }
+  
+  /* Show all thumbnails */
+  #slide-pager ul li {
+    display: block;
+  }
+  
+  /* Use hover effects for desktop instead */
+  #slide-pager ul li:hover:not(.activeSlide) {
+    transform: translateY(-2px);
+    box-shadow: var(--carousel-shadow-md);
+  }
+  
+  /* Hide the indicators on larger screens */
+  .thumb-indicator {
+    display: none !important;
+  }
+}
+
+/* Support for prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  #slideshow li,
+  .carousel-btn,
+  #slide-pager ul li,
+  #slide-pager_prev,
+  #slide-pager_next {
+    transition: none;
+  }
+  
+  #slide-pager ul {
+    scroll-behavior: auto;
+  }
+}
+
+/* Accessibility - Screen reader only elements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Mobile UX - Add pull to refresh indicator */
+.pull-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: var(--carousel-primary-light);
+  z-index: 10;
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.is-pulling .pull-indicator {
+  opacity: 1;
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --carousel-bg: #121212;
+    --carousel-text: #f0f0f0;
+    --carousel-shadow-sm: 0 1px 4px rgba(0,0,0,0.2);
+    --carousel-shadow-md: 0 2px 8px rgba(0,0,0,0.25);
+    --carousel-shadow-lg: 0 2px 16px rgba(0,0,0,0.3);
+  }
+}
