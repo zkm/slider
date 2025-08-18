@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "npx serve ."
   },
   "devDependencies": {
     "jest": "^29.0.0",
