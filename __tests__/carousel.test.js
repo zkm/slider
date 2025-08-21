@@ -1,5 +1,3 @@
-const { updateScrollAmount, showSlide } = require('../js/carousel');
-
 describe('Carousel Functions', () => {
   test('updateScrollAmount calculates correctly', () => {
     // Mock thumbnailItems
@@ -10,8 +8,6 @@ describe('Carousel Functions', () => {
   });
 
   test('showSlide updates current slide', () => {
-    // Mock slides
-    const slides = [{}, {}, {}];
     let current = 0;
     const idx = 1;
     current = idx;

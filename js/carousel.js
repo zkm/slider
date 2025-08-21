@@ -101,8 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		
 		// Remove previous transition classes
 		slides.forEach(slide => {
-			slide.classList.remove('slide-incoming-next', 'slide-outgoing-next', 
-								  'slide-incoming-prev', 'slide-outgoing-prev');
+			slide.classList.remove('slide-incoming-next', 'slide-outgoing-next', 'slide-incoming-prev', 'slide-outgoing-prev');
 			slide.setAttribute('aria-selected', 'false');
 			slide.style.zIndex = 1;
 		});
@@ -146,12 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 	// First/last button states management has been removed
 
-	function nextSlide() {
-		showSlide((current + 1) % slides.length);
-	}
-	function prevSlide() {
-		showSlide((current - 1 + slides.length) % slides.length);
-	}
+	// next/prev will be defined later with optional direction param
 
 	nextBtn.addEventListener('click', function (e) {
 		e.preventDefault();
@@ -351,9 +345,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	updateThumbnailVisibility();
 
 	thumbnailItems.forEach((item, index) => {
-    console.log(`Thumbnail ${index} width:`, item.offsetWidth);
-});
+		console.log(`Thumbnail ${index} width:`, item.offsetWidth);
+	});
 
-const totalThumbnailWidth = thumbnailItems.reduce((acc, item) => acc + item.offsetWidth, 0);
-console.log('Total Thumbnail Width:', totalThumbnailWidth);
+	const totalThumbnailWidth = thumbnailItems.reduce((acc, item) => acc + item.offsetWidth, 0);
+	console.log('Total Thumbnail Width:', totalThumbnailWidth);
 });
