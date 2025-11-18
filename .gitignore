@@ -1,6 +1,16 @@
 # Node.js dependencies
 node_modules/
 
+# Package manager files
+package-lock.json
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
 # Logs
 *.log
 npm-debug.log*
