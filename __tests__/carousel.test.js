@@ -8,9 +8,8 @@ describe('Carousel Functions', () => {
   });
 
   test('showSlide updates current slide', () => {
-    let current = 0;
     const idx = 1;
-    current = idx;
+    const current = idx;
     expect(current).toBe(1);
   });
 });
