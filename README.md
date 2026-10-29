@@ -1,5 +1,6 @@
 # Modern Accessible Image Slider
 
+[![Tests](https://github.com/zkm/slider/actions/workflows/tests.yml/badge.svg)](https://github.com/zkm/slider/actions/workflows/tests.yml)
 [![live demo](https://img.shields.io/website?url=https%3A%2F%2Fzkm.github.io%2Fslider%2F&label=live%20demo)](https://zkm.github.io/slider/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 

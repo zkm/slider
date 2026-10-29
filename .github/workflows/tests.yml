@@ -3,11 +3,11 @@ name: Run Tests
 on:
   push:
     branches:
-      - main
+      - master
       - feature/*
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   test:
@@ -15,18 +15,21 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '16'
+        node-version: '24'
 
     - name: Enable Corepack
       run: corepack enable
 
     - name: Install dependencies
       run: yarn install --immutable
+
+    - name: Lint
+      run: yarn lint
 
     - name: Run tests
       run: yarn test
