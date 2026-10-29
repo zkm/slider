@@ -1,4 +1,13 @@
 # Modern Accessible Image Slider
+
+[![live demo](https://img.shields.io/website?url=https%3A%2F%2Fzkm.github.io%2Fslider%2F&label=live%20demo)](https://zkm.github.io/slider/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
+![JavaScript vanilla](https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?logo=javascript&logoColor=black)
+![ARIA accessible](https://img.shields.io/badge/accessibility-ARIA-005A9C)
+![Jest](https://img.shields.io/badge/Jest-C21325?logo=jest&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white)
+
 A contemporary, accessible image slider built with vanilla JavaScript. This project demonstrates a responsive image carousel with thumbnail navigation that works across all devices and meets WCAG/508 accessibility standards.
 
 ## Features
